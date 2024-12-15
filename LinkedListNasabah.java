@@ -16,7 +16,7 @@ public class LinkedListNasabah {
     }
     public boolean daftar(String newName, String newAddress, String newUsername, String newPassword){
         if(head == null){
-            head = tail = new NodeNasabah(new Nasabah (newName, newAddress,0, newUsername, newPassword));
+            head = tail = new NodeNasabah(new Nasabah (newName, newAddress, newUsername, newPassword));
             return true;
         }
         NodeNasabah temp = head;
@@ -26,7 +26,7 @@ public class LinkedListNasabah {
             }
             temp = temp.next;
         }
-        tail.next = new NodeNasabah(new Nasabah (newName, newAddress,0, newUsername, newPassword));
+        tail.next = new NodeNasabah(new Nasabah (newName, newAddress, newUsername, newPassword));
         tail = tail.next;
         return true;
     }
