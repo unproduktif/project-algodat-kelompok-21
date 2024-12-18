@@ -43,6 +43,26 @@ public class Admin{
         }
     }
     public void antrianCS(){
-
+        boolean running = true;
+        while (running) {
+            System.out.println("\n--- Menu Antrian CS ---");
+            System.out.println("1. Lihat Antrian");
+            System.out.println("2. Proses Antrian");
+            System.out.println("3. Keluar");
+            System.out.print("Pilih menu: ");
+            int pilihan = scanner.nextInt();
+            switch (pilihan) {
+                case 1:
+                    LLnasabah.listAntrian();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    running = false;
+                    break;
+                default:
+                    System.out.println("Pilihan tidak valid.");
+            }
+        }
     }
 }

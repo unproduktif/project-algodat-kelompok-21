@@ -32,7 +32,7 @@ public class Main {
                         NodeNasabah temp=LLnasabah.head;
                         while(temp!=null){
                             if(temp.data.username.equals(username)&&temp.data.password.equals(password)){
-                                temp.data.menuNasabah(scanner);
+                                temp.data.menuNasabah(scanner, LLnasabah);
                                 break;
                             }
                             temp=temp.next;

@@ -16,14 +16,15 @@ public class Nasabah {
         this.password = password;
         this.noRekening=noRekening;
     }
-    public void menuNasabah(Scanner scanner){
+    public void menuNasabah(Scanner scanner, LinkedListNasabah LLnasabah){
         boolean running=true;
         while(running){
             System.out.println("\n=== MENU NASABAH ===");
             System.out.println("1. Isi Saldo\t5. Info Saldo");
             System.out.println("2. Tarik Tunai\t6. Info Akun");
             System.out.println("3. Transfer\t7. Hubungi CS");
-            System.out.println("4. Cek Mutasi\t8. Keluar");
+            System.out.println("4. Cek Mutasi\t8. Kantor Cabang");
+            System.out.println("0. Keluar");
             int pilih=scanner.nextInt();
             scanner.nextLine();
             switch (pilih) {
@@ -45,8 +46,11 @@ public class Nasabah {
                     infoAkun();
                     break;
                 case 7:
+                hubungiCS(LLnasabah);;
                     break;
                 case 8:
+                    break;
+                case 0:
                     return; 
                     default:
                     break;
@@ -92,5 +96,11 @@ public class Nasabah {
         System.out.println("Alamat  : " + alamat);
         System.out.println("Username: " + username);
         System.out.println("Saldo   : " + saldo);
+    }
+
+    private void hubungiCS(LinkedListNasabah LLnasabah){
+        System.out.println("Anda akan masuk ke dalam antrian CS");
+        LLnasabah.addAntrianCS(this);
+        System.out.println("Anda telah masuk ke dalam antrian CS");
     }
 }

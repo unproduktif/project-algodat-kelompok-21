@@ -1,5 +1,6 @@
 public class LinkedListNasabah {
     NodeNasabah head, tail;
+    AntriankeCS antriankeCS=new AntriankeCS();
     private int counter=1;
     public boolean login(String username, String password){
         NodeNasabah temp = head;
@@ -37,5 +38,13 @@ public class LinkedListNasabah {
         char huruf=(char)('A'+((count-1)/999));
         int angka=((count-1)%999)+1;
         return huruf+String.format("%03d",angka);
+    }
+
+    //untuk Antrian Ke CS
+    public void addAntrianCS(Nasabah nasabah ){
+        antriankeCS.enqueue(nasabah);
+    }
+    public void listAntrian(){
+        antriankeCS.displayAntrian();
     }
 }
