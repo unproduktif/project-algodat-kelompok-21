@@ -38,7 +38,7 @@ public class Nasabah {
                     tarikTunai(scanner);
                     break;
                 case 3:
-                    transfer(scanner);
+                    transfer(scanner, LLnasabah);;
                     break;
                 case 4:
                     mutasi.cekMutasi();
@@ -83,13 +83,45 @@ public class Nasabah {
             System.out.println("Tarik tunai gagal! Saldo tidak mencukupi.");
         }
     }
-    private void transfer(Scanner scanner){
-        // System.out.println("Masukkan nomor rekening tujuan: ");
-        // String norekTujuan=scanner.next();
-
-        // if(this.noRekening.equals(norekTujuan)){
+    private void transfer(Scanner scanner, LinkedListNasabah LLnasabah) {
+        System.out.print("Masukkan nomor rekening tujuan: ");
+        String rekTujuan = scanner.nextLine();
+        
+        System.out.print("Masukkan jumlah transfer: ");
+        double jumlahTransfer = scanner.nextDouble();
+        scanner.nextLine(); 
+        
+        if (jumlahTransfer > 0 && jumlahTransfer <= saldo) {
+            NodeNasabah tempDest = LLnasabah.head;
+            boolean found = false;
             
-        // }
+            while (tempDest != null) {
+                if (tempDest.data.noRekening.equals(rekTujuan)) {
+                    saldo -= jumlahTransfer;
+                    
+                    tempDest.data.saldo += jumlahTransfer;
+                    
+                    System.out.println("Transfer berhasil!");
+                    System.out.println("Nomor Rekening Tujuan: " + rekTujuan);
+                    System.out.println("Jumlah Transfer: Rp. " + jumlahTransfer);
+                    
+                    found = true;
+                    break;
+                }
+                tempDest = tempDest.next;
+            }
+            
+            if (!found) {
+                System.out.println("Nomor rekening tujuan tidak ditemukan!");
+            }
+        } else {
+            System.out.println("Transfer gagal!");
+            if (jumlahTransfer <= 0) {
+                System.out.println("Jumlah transfer tidak valid.");
+            } else {
+                System.out.println("Saldo tidak mencukupi.");
+            }
+        }
     }
     private void infoSaldo(){
         System.out.println("Saldo Anda saat ini Rp. "+ saldo);
