@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.time.LocalDate;
 
 public class Nasabah {
     String nama;
@@ -7,6 +8,7 @@ public class Nasabah {
     String username;
     String password;
     String noRekening;
+    LLTranksaksi mutasi;
 
     public Nasabah(String nama, String alamat, String username, String password, double saldo, String noRekening){
         this.nama = nama;
@@ -15,6 +17,7 @@ public class Nasabah {
         this.username = username;
         this.password = password;
         this.noRekening=noRekening;
+        this.mutasi = null;
     }
     public void menuNasabah(Scanner scanner, LinkedListNasabah LLnasabah){
         boolean running=true;
@@ -38,6 +41,7 @@ public class Nasabah {
                     transfer(scanner);
                     break;
                 case 4:
+                    mutasi.cekMutasi();
                     break;
                 case 5:
                     infoSaldo();
@@ -52,7 +56,7 @@ public class Nasabah {
                     break;
                 case 0:
                     return; 
-                    default:
+                default:
                     break;
             }
         }
@@ -63,6 +67,7 @@ public class Nasabah {
         if(isisaldo>0){
             saldo+=isisaldo;
             System.out.println("Saldo berhasil ditambahkan sebesar Rp. "+isisaldo);
+            mutasi.push(LocalDate.now(), "Isi saldo", isisaldo, saldo);
         }else{
             System.out.println("Jumlah saldo tidak valid!");
         }
@@ -73,6 +78,7 @@ public class Nasabah {
         if (tarikTunai > 0 && tarikTunai <= saldo) {
             saldo -= tarikTunai;
             System.out.println("Tarik tunai berhasil sebesar Rp. " + tarikTunai);
+            mutasi.push(LocalDate.now(), "Tarik tunai", tarikTunai, saldo);
         } else {
             System.out.println("Tarik tunai gagal! Saldo tidak mencukupi.");
         }
