@@ -4,6 +4,6 @@ public class NodeTransaksi {
     
     public NodeTransaksi(Transaksi data){
         this.data = data;
-        this.next=null;
+        this.next = null;
     }
 }

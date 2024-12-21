@@ -51,4 +51,12 @@ public class AntriankeCS {
             temp=temp.next;
         }
     }
+
+    public Nasabah peek() {
+        if (front != null) {
+            return front.nasabah;
+        }
+        System.out.println("Antrian kosong.");
+        return null;
+    }
 }
