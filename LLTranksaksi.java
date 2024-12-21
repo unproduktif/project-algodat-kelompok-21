@@ -1,4 +1,6 @@
 import java.time.LocalDate;
+import java.util.Scanner;
+
 
 public class LLTranksaksi {
     NodeTransaksi top;
@@ -16,9 +18,13 @@ public class LLTranksaksi {
             top = newNode;
         }
     }
-    public void cekMutasi(){
+    public void cekMutasi(Scanner scanner){
+        System.out.println("\n===========================================");
+        System.out.println("||            CEK MUTASI                 ||");
+        System.out.println("===========================================");
         if(top==null){
             System.out.println("Mutasi kosong");
+            scanner.nextLine();
             return;
         } else{
             System.out.println("--- Mutasi Saldo ---");
@@ -27,6 +33,7 @@ public class LLTranksaksi {
                 System.out.println("Tanggal: "+temp.data.tanggal+", Deskripsi: "+temp.data.deskripsi+", Nominal: Rp. "+temp.data.nominal+", Saldo Setelah Transaksi: Rp. "+temp.data.saldoSetelahTransaksi);
                 temp=temp.next;
             }
+            scanner.nextLine();
         }
     }
 }
